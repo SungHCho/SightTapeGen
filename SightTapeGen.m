@@ -1,4 +1,4 @@
-classdef SightTapeGen
+classdef SightTapeGen < handle
     % Generate sight tape
     
     properties
@@ -59,7 +59,7 @@ classdef SightTapeGen
             obj.PrintDPI = 300;
         end
         
-        function obj = set.DistancePoints(obj, newDistancePoints)
+        function set.DistancePoints(obj, newDistancePoints)
             if ~iscolumn(newDistancePoints)
                 error('Data points must be column vectors!')
             end
@@ -71,7 +71,7 @@ classdef SightTapeGen
             obj.DistancePoints = newDistancePoints;
         end
         
-        function obj = set.SightTapePoints(obj, newSightTapePoints)
+        function set.SightTapePoints(obj, newSightTapePoints)
             if ~iscolumn(newSightTapePoints)
                 error('Data points must be column vectors!')
             end
@@ -83,7 +83,7 @@ classdef SightTapeGen
             obj.SightTapePoints = newSightTapePoints;
         end
         
-        function obj = set.ConfidencePoints(obj, newConfidencePoints)
+        function set.ConfidencePoints(obj, newConfidencePoints)
             if ~iscolumn(newConfidencePoints)
                 error('Data points must be column vectors!')
             end
@@ -95,7 +95,7 @@ classdef SightTapeGen
             obj.ConfidencePoints = newConfidencePoints;
         end        
         
-        function obj = set.PrintDPI(obj, newPrintDPI)
+        function set.PrintDPI(obj, newPrintDPI)
             if numel(newPrintDPI) ~= 1
                 error('Data points must be an integer!')
             end
@@ -108,7 +108,7 @@ classdef SightTapeGen
             obj.PrintDPI = newPrintDPI;
         end       
         
-        function obj = set.TapeName(obj, newTapeName)
+        function set.TapeName(obj, newTapeName)
             if ~ischar(newTapeName)
                 error('Data points must be a character string!')
             end
@@ -121,6 +121,8 @@ classdef SightTapeGen
         GenerateSightTape(obj)
         
         SaveTape(obj)
+        
+        LoadTape(obj, TapePath)
     end
 end
 
